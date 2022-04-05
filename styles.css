@@ -1,0 +1,24 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    justify-content: space-evenly;
+}
+
+.buttons {
+    display: flex;
+    align-items: flex-start;
+}
+
+li {
+    list-style-type: none;
+}
+
+.canvas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+}
+
