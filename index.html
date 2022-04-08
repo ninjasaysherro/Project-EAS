@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sketchpad</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,12 +12,13 @@
     <div class = 'content'>
         <div class = 'buttons'>
             <ul>
-                <li><button>16 x 16</button></li>
-                <li><button>32 x 32</button></li>
-                <li><button>64 x 64</button></li>
+                <li><button data-selection = "16">16 x 16</button></li>
+                <li><button data-selection = "32">32 x 32</button></li>
+                <li><button data-selection = "64">64 x 64</button></li>
+                <li><button id = "clearGrid">Erase?</button></li>
             </ul>
         </div>
-        <div class = 'canvas'></div>
+        <div id = "canvas"></div>
     </div>
 </body>
 </html>
