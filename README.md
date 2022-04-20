@@ -16,4 +16,5 @@ I've been running around trying to get the car sorted out and being distracted f
 much on this. I just wanted to finish this.
 
 It did teach me about CSS Grid and how to use it but I feel like I still need more practice with this. But overall, I'm pretty happy with the JavaScript
-portion of this project. I would say it has solidified my understanding of DOM manipulation and event listeners.
+portion of this project. I would say it has solidified my understanding of DOM manipulation and event listeners as well as using JavaScript to create
+elements on the HTML document dynamically.
