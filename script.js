@@ -1,48 +1,60 @@
-const button = document.querySelectorAll('button');
-const erase = document.getElementById('clearGrid');
-const canvas = document.getElementById('canvas');
-const rows = document.getElementsByClassName('row');
-const cell = document.getElementsByClassName('cell');
+const black = document.querySelector("#Black");
+const rgb = document.querySelector("#Rainbow");
+const newSize = document.querySelector("#changeSize");
+const reset = document.querySelector("#reset")
+const maxWidth = 400;
 
-function addGrid(x) {
-    makeRows(x);
-    makeColumns(x);
-}
+window.addEventListener('load', makeBlocks);
 
-button.forEach(button => {
-    button.addEventListener('click', function() {
-        const selection = button.dataset.selection;
-        addGrid(selection)
-    })
-})
+let size = 20;
 
-function makeRows(rowNum) {
-    for (r = 0; r < rowNum; r++) {
-        let row = document.createElement("div");
-        canvas.appendChild(row).className = "row";
-        row.setAttribute('id', 'row')
+function makeBlocks() {
+    for (let i = 0; i < size; i++) {
+    let row = document.createElement('div');
+    row.className = "row";
+    for (let j = 0; j < size; j++) {
+        let cell = document.createElement('div');
+        cell.className = "cell";
+        row.appendChild(cell);
     }
-}
-
-function makeColumns(cellNum) {
-    for (i = 0; i < rows.length; i++) {
-        for (j = 0; j < cellNum; j++) {
-            let newCell = document.createElement("div");
-            rows[j].appendChild(newCell).className = "cell";
-            newCell.setAttribute('id', 'cells')
+    document.getElementById('canvas').appendChild(row);
+    canvas.addEventListener("mouseover", colorBlack);
+    let boxes = document.getElementsByClassName("cell");
+    for (k = 0; k < boxes.length; k++) {
+        boxes[k].style.width = maxWidth / size;
+        boxes[k].style.height = maxWidth / size;
         }
     }
 }
 
-addGrid(16);
+function colorBlack() {
+    let cells = document.getElementById('canvas');
+        cells.addEventListener('mouseover', function(e) {
+            e.target.style.backgroundColor = '#000000';
+    })
+}
 
-function changeStyle() {
-    for (let i = 0; i < cell.length; i++) {
-        let cells = document.getElementById('canvas');
-            cells.addEventListener('mouseover', function(e) {
-                e.target.style.backgroundColor = '#000000';
-            }
-        )}
+newSize.addEventListener('click', changeSize);
+
+function changeSize() {
+    let newSize = prompt('What size would you like? Choose between 1-64');
+    let value = parseInt(newSize);
+    if (value > 1 && value <= 64) {
+        size = newSize;
+        clearGrid();
+        makeBlocks();
     }
+}
 
-changeStyle()
+function clearGrid() {
+    const array = Array.from(canvas.childNodes);
+    array.forEach((element) => {
+        canvas.removeChild(element);
+    });
+}
+
+function resetBoard() {
+    reset.addEventListener('click', () => 
+    location.reload());
+}
+resetBoard();
